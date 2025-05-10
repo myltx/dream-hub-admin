@@ -65,7 +65,7 @@ export const generatedRoutes: GeneratedRoute[] = [
   },
   {
     name: 'login',
-    path: '/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?',
+    path: '/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat|auto-login)?',
     component: 'layout.blank$view.login',
     props: true,
     meta: {
@@ -74,5 +74,5 @@ export const generatedRoutes: GeneratedRoute[] = [
       constant: true,
       hideInMenu: true
     }
-  }
+  },
 ];

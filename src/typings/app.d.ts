@@ -459,6 +459,9 @@ declare namespace App {
           bindWeChat: {
             title: string;
           };
+          autoLogin: {
+            title: string;
+          };
         };
         home: {
           branchDesc: string;
