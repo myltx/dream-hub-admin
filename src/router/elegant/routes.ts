@@ -74,5 +74,5 @@ export const generatedRoutes: GeneratedRoute[] = [
       constant: true,
       hideInMenu: true
     }
-  },
+  }
 ];
