@@ -13,12 +13,12 @@ export function setupElegantRouter() {
 
       if (key === 'login') {
         const modules: UnionKey.LoginModule[] = [
+          'auto-login',
           'pwd-login',
           'code-login',
           'register',
           'reset-pwd',
-          'bind-wechat',
-          'auto-login'
+          'bind-wechat'
         ];
 
         const moduleReg = modules.join('|');
