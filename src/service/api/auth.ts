@@ -1,3 +1,5 @@
+import { ServicePrefixEnum } from '@/enum';
+import { RequestEnum } from '@/enum/httpEnum';
 import { request } from '../request';
 
 /**
@@ -20,6 +22,14 @@ export function fetchLogin(userName: string, password: string) {
 /** Get user info */
 export function fetchGetUserInfo() {
   return request<Api.Auth.UserInfo>({ url: '/auth/getUserInfo' });
+}
+
+export function getUserInfoByUserId(data: { userId: string }) {
+  return request<Api.Auth.UserInfo>({
+    url: `${ServicePrefixEnum.USER}/detail`,
+    method: RequestEnum.POST,
+    data
+  });
 }
 
 /**

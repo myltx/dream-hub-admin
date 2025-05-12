@@ -12,6 +12,7 @@ import Register from './modules/register.vue';
 import ResetPwd from './modules/reset-pwd.vue';
 import BindWechat from './modules/bind-wechat.vue';
 import AutoLogin from './modules/auto-login.vue';
+import CallBack from './modules/call-back.vue';
 
 interface Props {
   /** The login module */
@@ -34,7 +35,8 @@ const moduleMap: Record<UnionKey.LoginModule, LoginModule> = {
   register: { label: loginModuleRecord.register, component: Register },
   'reset-pwd': { label: loginModuleRecord['reset-pwd'], component: ResetPwd },
   'bind-wechat': { label: loginModuleRecord['bind-wechat'], component: BindWechat },
-  'auto-login': { label: loginModuleRecord['auto-login'], component: AutoLogin }
+  'auto-login': { label: loginModuleRecord['auto-login'], component: AutoLogin },
+  'call-back': { label: loginModuleRecord['call-back'], component: CallBack }
 };
 
 const activeModule = computed(() => moduleMap[props.module || 'auto-login']);

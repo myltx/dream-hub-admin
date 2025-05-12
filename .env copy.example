@@ -1,0 +1,19 @@
+# backend service base url, test environment
+VITE_SERVICE_BASE_URL=http://localhost:8081
+
+# other backend service base url, test environment
+VITE_OTHER_SERVICE_BASE_URL= `{
+  "demo": "http://localhost:8081"
+}`
+
+
+# Logto configuration
+VITE_LOGTO_ENDPOINT=
+VITE_LOGTO_APP_ID=
+
+VITE_BACKEND_ENDPOINT=""
+
+VITE_LOGTO_SIGN_IN_REDIRECT_URI=
+VITE_LOGTO_SIGN_OUT_REDIRECT_URI=
+
+

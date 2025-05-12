@@ -99,7 +99,6 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
    */
   async function login(userName: string, password: string, redirect = true) {
     startLoading();
-
     const { data: loginToken, error } = await fetchLogin(userName, password);
 
     if (!error) {
@@ -128,7 +127,28 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
     endLoading();
   }
+  // logto 登录成功逻辑,将 token 存储到 localStorage 中,并获取用户信息
+  async function logtoLoginSuccess(data: any, redirect = true) {
+    // console.log('logtoLoginSuccess', data);
+    if (data.token) {
+      // Check if the tab needs to be cleared
+      const isClear = checkTabClear();
+      let needRedirect = redirect;
 
+      if (isClear) {
+        // If the tab needs to be cleared,it means we don't need to redirect.
+        needRedirect = false;
+      }
+      await redirectFromLogin(needRedirect);
+
+      window.$notification?.success({
+        title: $t('page.login.common.loginSuccess'),
+        content: $t('page.login.common.welcomeBack', { userName: userInfo.userName }),
+        duration: 4500
+      });
+      Object.assign(userInfo, data);
+    }
+  }
   async function loginByToken(loginToken: Api.Auth.LoginToken) {
     // 1. stored in the localStorage, the later requests need it in headers
     localStg.set('token', loginToken.token);
@@ -179,6 +199,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     loginLoading,
     resetStore,
     login,
+    logtoLoginSuccess,
     initUserInfo
   };
 });

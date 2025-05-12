@@ -32,7 +32,6 @@ export function createRouteGuard(router: Router) {
     const noAuthorizationRoute: RouteKey = '403';
 
     const isLogin = Boolean(localStg.get('token'));
-    console.log(isLogin, 'isLogin');
     const needLogin = !to.meta.constant;
     const routeRoles = to.meta.roles || [];
 

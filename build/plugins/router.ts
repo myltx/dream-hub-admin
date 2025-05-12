@@ -18,7 +18,8 @@ export function setupElegantRouter() {
           'code-login',
           'register',
           'reset-pwd',
-          'bind-wechat'
+          'bind-wechat',
+          'call-back'
         ];
 
         const moduleReg = modules.join('|');

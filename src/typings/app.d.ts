@@ -462,6 +462,9 @@ declare namespace App {
           autoLogin: {
             title: string;
           };
+          callBack: {
+            title: string;
+          };
         };
         home: {
           branchDesc: string;

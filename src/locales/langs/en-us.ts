@@ -212,6 +212,9 @@ const local: App.I18n.Schema = {
       },
       autoLogin: {
         title: 'Auto Login'
+      },
+      callBack: {
+        title: 'Logto SingIng'
       }
     },
     home: {

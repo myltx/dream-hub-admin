@@ -212,6 +212,9 @@ const local: App.I18n.Schema = {
       },
       autoLogin: {
         title: '自动登录'
+      },
+      callBack: {
+        title: 'Logto 登录中'
       }
     },
     home: {
