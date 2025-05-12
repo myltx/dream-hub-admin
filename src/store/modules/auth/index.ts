@@ -2,7 +2,7 @@ import { computed, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { defineStore } from 'pinia';
 import { useLoading } from '@sa/hooks';
-import { fetchGetUserInfo, fetchLogin } from '@/service/api';
+import { fetchLogin, getUserInfoByUserId } from '@/service/api';
 import { useRouterPush } from '@/hooks/common/router';
 import { localStg } from '@/utils/storage';
 import { SetupStoreId } from '@/enum';
@@ -12,6 +12,7 @@ import { useTabStore } from '../tab';
 import { clearAuthStorage, getToken } from './shared';
 
 export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
+  const { VITE_BACKEND_ENDPOINT } = import.meta.env;
   const route = useRoute();
   const routeStore = useRouteStore();
   const tabStore = useTabStore();
@@ -129,7 +130,6 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   }
   // logto 登录成功逻辑,将 token 存储到 localStorage 中,并获取用户信息
   async function logtoLoginSuccess(data: any, redirect = true) {
-    // console.log('logtoLoginSuccess', data);
     if (data.token) {
       // Check if the tab needs to be cleared
       const isClear = checkTabClear();
@@ -167,11 +167,31 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   }
 
   async function getUserInfo() {
-    const { data: info, error } = await fetchGetUserInfo();
+    // console.log('回调');
+    const info = ref<any>({});
+    const { data, error } = await getUserInfoByUserId({
+      userId: userInfo.userId as string
+    });
+    // 暂时并未添加异常处理
+    if (!data) {
+      // await createUser({
+      //   userId: res?.sub,
+      //   email: res?.email,
+      // });
+      // const { data: userData } = await getUserInfoByUserId({
+      //   userId: res?.sub as string,
+      // });
+      // userInfo.value = userData;
+    } else {
+      info.value = data;
+    }
+    // const { data: info, error } = await fetchGetUserInfo();
 
     if (!error) {
       // update store
-      Object.assign(userInfo, info);
+      Object.assign(userInfo, {
+        userInfo: info.value
+      });
 
       return true;
     }

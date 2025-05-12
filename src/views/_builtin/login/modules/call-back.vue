@@ -14,7 +14,6 @@ const { isLoading } = useHandleSignInCallback(async () => {
   // console.log('回调');
   const claims = await getIdTokenClaims();
   const token = (await getAccessToken(VITE_BACKEND_ENDPOINT)) as string;
-  // console.log(token, 'token');
 
   localStg.set('token', token);
   localStg.set('refreshToken', token);
@@ -39,6 +38,7 @@ const { isLoading } = useHandleSignInCallback(async () => {
   }
   authStore.logtoLoginSuccess({
     userId: res?.sub,
+    token,
     ...res,
     ...claims,
     userInfo: userInfo.value
