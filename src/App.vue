@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { NConfigProvider, darkTheme } from 'naive-ui';
 import type { WatermarkProps } from 'naive-ui';
-import { useLogto } from '@logto/vue';
-import { getUserInfoByUserId } from '@/service/api';
-import { useAuthStore } from '@/store/modules/auth';
-import { useRouterPush } from '@/hooks/common/router';
-import { localStg } from '@/utils/storage';
 import { useAppStore } from './store/modules/app';
 import { useThemeStore } from './store/modules/theme';
 import { naiveDateLocales, naiveLocales } from './locales/naive';
@@ -14,11 +9,6 @@ import { naiveDateLocales, naiveLocales } from './locales/naive';
 defineOptions({
   name: 'App'
 });
-
-const { toLogin } = useRouterPush();
-
-const { getIdTokenClaims, fetchUserInfo, getAccessToken, isAuthenticated } = useLogto();
-console.log(isAuthenticated.value, 'isAuthenticated111');
 
 const appStore = useAppStore();
 const themeStore = useThemeStore();

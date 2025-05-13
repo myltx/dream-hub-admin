@@ -139,7 +139,6 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
       localStg.set('token', data.token);
       localStg.set('refreshToken', data.refreshToken);
       localStg.set('userId', data.sub);
-      localStg.set('userInfo', data);
       // localStg.set('username', data.username);
       // Check if the tab needs to be cleared
       const isClear = checkTabClear();
@@ -157,6 +156,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
         duration: 4500
       });
       Object.assign(userInfo, data);
+      localStg.set('userInfo', userInfo);
       recordUserId();
     }
   }
