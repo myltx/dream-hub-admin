@@ -19,7 +19,6 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   const { loading: loginLoading, startLoading, endLoading } = useLoading();
 
   const token = ref(getToken());
-
   const userInfo: Api.Auth.UserInfo = reactive({
     userId: '',
     username: '',
@@ -27,6 +26,10 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     roles: [],
     buttons: []
   });
+
+  if (localStg.get('userInfo')) {
+    Object.assign(userInfo, localStg.get('userInfo'));
+  }
 
   /** is super role in static route */
   const isStaticSuper = computed(() => {
@@ -135,7 +138,8 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
       token.value = data.token;
       localStg.set('token', data.token);
       localStg.set('refreshToken', data.refreshToken);
-      // localStg.set('userid', data.sub);
+      localStg.set('userId', data.sub);
+      localStg.set('userInfo', data);
       // localStg.set('username', data.username);
       // Check if the tab needs to be cleared
       const isClear = checkTabClear();
@@ -153,6 +157,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
         duration: 4500
       });
       Object.assign(userInfo, data);
+      recordUserId();
     }
   }
   async function loginByToken(loginToken: Api.Auth.LoginToken) {
@@ -175,11 +180,10 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   async function getUserInfo() {
     // console.log('回调');
     const info = ref<any>({});
-    console.log(userInfo, 'userInfo');
+    // localStg.get('token');
     const { data, error } = await getUserInfoByUserId({
       userId: userInfo.sub as string
     });
-    console.log(data, 'data');
     // 暂时并未添加异常处理
     if (!data) {
       // await createUser({

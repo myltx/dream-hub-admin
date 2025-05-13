@@ -30,6 +30,8 @@ const local: App.I18n.Schema = {
     logout: '退出登录',
     logoutConfirm: '确认退出登录吗？',
     lookForward: '敬请期待',
+    lookEffect: '查看效果',
+    lookEffectConfirm: '确认想要去查看效果吗？',
     modify: '修改',
     modifySuccess: '修改成功',
     noData: '无数据',

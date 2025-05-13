@@ -5,7 +5,6 @@ export type StorageType = 'local' | 'session';
 
 export function createStorage<T extends object>(type: StorageType, storagePrefix: string) {
   const stg = type === 'session' ? window.sessionStorage : window.localStorage;
-
   const storage = {
     /**
      * Set session

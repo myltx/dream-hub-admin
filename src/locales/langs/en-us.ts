@@ -29,6 +29,8 @@ const local: App.I18n.Schema = {
     keywordSearch: 'Please enter keyword',
     logout: 'Logout',
     logoutConfirm: 'Are you sure you want to log out?',
+    lookEffect: 'View Effect',
+    lookEffectConfirm: 'Are you sure want to look effect？',
     lookForward: 'Coming soon',
     modify: 'Modify',
     modifySuccess: 'Modify Success',

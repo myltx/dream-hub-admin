@@ -60,6 +60,7 @@ export function useRouterPush(inSetup = true) {
    * @param redirectUrl The redirect url, if not specified, it will be the current route fullPath
    */
   async function toLogin(loginModule?: UnionKey.LoginModule, redirectUrl?: string) {
+    console.log('toLogin', loginModule, redirectUrl);
     const module = loginModule || 'auto-login';
 
     const options: App.Global.RouterPushOptions = {

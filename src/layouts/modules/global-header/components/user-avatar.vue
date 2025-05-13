@@ -18,7 +18,7 @@ function loginOrRegister() {
   toLogin();
 }
 
-type DropdownKey = 'logout';
+type DropdownKey = 'logout' | 'lookEffect';
 
 type DropdownOption =
   | {
@@ -33,9 +33,14 @@ type DropdownOption =
 
 const options = computed(() => {
   const opts: DropdownOption[] = [
+    // {
+    //   label: $t('common.logout'),
+    //   key: 'logout',
+    //   icon: SvgIconVNode({ icon: 'ph:sign-out', fontSize: 18 })
+    // },
     {
-      label: $t('common.logout'),
-      key: 'logout',
+      label: $t('common.lookEffect'),
+      key: 'lookEffect',
       icon: SvgIconVNode({ icon: 'ph:sign-out', fontSize: 18 })
     }
   ];
@@ -50,7 +55,23 @@ function logout() {
     positiveText: $t('common.confirm'),
     negativeText: $t('common.cancel'),
     onPositiveClick: () => {
+      // window.location.href = 'http://localhost:3000';
       authStore.resetStore();
+    }
+  });
+}
+
+function lookEffect() {
+  window.$dialog?.info({
+    title: $t('common.tip'),
+    content: $t('common.lookEffectConfirm'),
+    positiveText: $t('common.confirm'),
+    negativeText: $t('common.cancel'),
+    onPositiveClick: () => {
+      window.location.href = 'http://localhost:3000';
+      // const { signOut } = useLogto();
+      // const { VITE_LOGTO_SIGN_OUT_REDIRECT_URI } = import.meta.env;
+      // authStore.resetStore();
       // signOut(VITE_LOGTO_SIGN_OUT_REDIRECT_URI);
     }
   });
@@ -59,6 +80,8 @@ function logout() {
 function handleDropdown(key: DropdownKey) {
   if (key === 'logout') {
     logout();
+  } else if (key === 'lookEffect') {
+    lookEffect();
   } else {
     // If your other options are jumps from other routes, they will be directly supported here
     routerPushByKey(key);
@@ -74,7 +97,7 @@ function handleDropdown(key: DropdownKey) {
     <div>
       <ButtonIcon>
         <SvgIcon icon="ph:user-circle" class="text-icon-large" />
-        <span class="text-16px font-medium">{{ authStore.userInfo.userName }}</span>
+        <span class="text-16px font-medium">{{ authStore.userInfo.username }}</span>
       </ButtonIcon>
     </div>
   </NDropdown>
