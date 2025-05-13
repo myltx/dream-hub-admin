@@ -9,7 +9,7 @@ import { $t } from '@/locales';
 defineOptions({
   name: 'UserAvatar'
 });
-
+const { VITE_BACKEND_ENDPOINT } = import.meta.env;
 const authStore = useAuthStore();
 const { routerPushByKey, toLogin } = useRouterPush();
 const { SvgIconVNode } = useSvgIcon();
@@ -68,7 +68,7 @@ function lookEffect() {
     positiveText: $t('common.confirm'),
     negativeText: $t('common.cancel'),
     onPositiveClick: () => {
-      window.location.href = 'http://localhost:3000';
+      window.location.href = VITE_BACKEND_ENDPOINT;
       // const { signOut } = useLogto();
       // const { VITE_LOGTO_SIGN_OUT_REDIRECT_URI } = import.meta.env;
       // authStore.resetStore();
