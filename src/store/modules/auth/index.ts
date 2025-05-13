@@ -12,7 +12,6 @@ import { useTabStore } from '../tab';
 import { clearAuthStorage, getToken } from './shared';
 
 export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
-  const { VITE_BACKEND_ENDPOINT } = import.meta.env;
   const route = useRoute();
   const routeStore = useRouteStore();
   const tabStore = useTabStore();
@@ -23,7 +22,8 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
   const userInfo: Api.Auth.UserInfo = reactive({
     userId: '',
-    userName: '',
+    username: '',
+    sub: '',
     roles: [],
     buttons: []
   });
@@ -118,7 +118,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
         window.$notification?.success({
           title: $t('page.login.common.loginSuccess'),
-          content: $t('page.login.common.welcomeBack', { userName: userInfo.userName }),
+          content: $t('page.login.common.welcomeBack', { userName: userInfo.username }),
           duration: 4500
         });
       }
@@ -131,6 +131,12 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   // logto 登录成功逻辑,将 token 存储到 localStorage 中,并获取用户信息
   async function logtoLoginSuccess(data: any, redirect = true) {
     if (data.token) {
+      Object.assign(userInfo, data);
+      token.value = data.token;
+      localStg.set('token', data.token);
+      localStg.set('refreshToken', data.refreshToken);
+      // localStg.set('userid', data.sub);
+      // localStg.set('username', data.username);
       // Check if the tab needs to be cleared
       const isClear = checkTabClear();
       let needRedirect = redirect;
@@ -143,7 +149,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
       window.$notification?.success({
         title: $t('page.login.common.loginSuccess'),
-        content: $t('page.login.common.welcomeBack', { userName: userInfo.userName }),
+        content: $t('page.login.common.welcomeBack', { userName: userInfo.username }),
         duration: 4500
       });
       Object.assign(userInfo, data);
@@ -169,9 +175,11 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   async function getUserInfo() {
     // console.log('回调');
     const info = ref<any>({});
+    console.log(userInfo, 'userInfo');
     const { data, error } = await getUserInfoByUserId({
-      userId: userInfo.userId as string
+      userId: userInfo.sub as string
     });
+    console.log(data, 'data');
     // 暂时并未添加异常处理
     if (!data) {
       // await createUser({
