@@ -44,7 +44,8 @@ const statisticData = computed<StatisticData[]>(() => [
       <NGi span="24 s:24 m:18">
         <div class="flex-y-center">
           <div class="size-72px shrink-0 overflow-hidden rd-1/2">
-            <img src="@/assets/imgs/soybean.jpg" class="size-full" />
+            <img v-if="authStore.userInfo.picture" :src="authStore.userInfo.picture" class="size-full" />
+            <img v-else src="@/assets/imgs/soybean.jpg" class="size-full" />
           </div>
           <div class="pl-12px">
             <h3 class="text-18px font-semibold">
