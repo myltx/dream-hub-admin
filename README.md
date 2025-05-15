@@ -1,6 +1,6 @@
 <div align="center">
 	<img src="./public/favicon.svg" width="160" />
-	<h1>SoybeanAdmin</h1>
+	<h1>DreamHubAdmin</h1>
   <span>中文 | <a href="./README.en_US.md">English</a></span>
 </div>
 
@@ -15,11 +15,11 @@
 <a href="https://hellogithub.com/repository/1298f27d5fe54959a16cf9686516ddb3" target="_blank"><img src="https://abroad.hellogithub.com/v1/widgets/recommend.svg?rid=1298f27d5fe54959a16cf9686516ddb3&claim_uid=IiDXWmP4TEntjbV" alt="Featured｜HelloGitHub" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
 > [!NOTE]
-> 如果您觉得 `SoybeanAdmin`对您有所帮助，或者您喜欢我们的项目，请在 GitHub 上给我们一个 ⭐️。您的支持是我们持续改进和增加新功能的动力！感谢您的支持！
+> 如果您觉得 `DreamHubAdmin`对您有所帮助，或者您喜欢我们的项目，请在 GitHub 上给我们一个 ⭐️。您的支持是我们持续改进和增加新功能的动力！感谢您的支持！
 
 ## 简介
 
-[`SoybeanAdmin`](https://github.com/soybeanjs/soybean-admin) 是一个清新优雅、高颜值且功能强大的后台管理模板，基于最新的前端技术栈，包括 Vue3, Vite6, TypeScript, Pinia 和 UnoCSS。它内置了丰富的主题配置和组件，代码规范严谨，实现了自动化的文件路由系统。此外，它还采用了基于 ApiFox 的在线Mock数据方案。`SoybeanAdmin` 为您提供了一站式的后台管理解决方案，无需额外配置，开箱即用。同样是一个快速学习前沿技术的最佳实践。
+[`DreamHubAdmin`](https://github.com/soybeanjs/soybean-admin) 是一个清新优雅、高颜值且功能强大的后台管理模板，基于最新的前端技术栈，包括 Vue3, Vite6, TypeScript, Pinia 和 UnoCSS。它内置了丰富的主题配置和组件，代码规范严谨，实现了自动化的文件路由系统。此外，它还采用了基于 ApiFox 的在线Mock数据方案。`DreamHubAdmin` 为您提供了一站式的后台管理解决方案，无需额外配置，开箱即用。同样是一个快速学习前沿技术的最佳实践。
 
 ## 特性
 
@@ -62,21 +62,21 @@
 
 ## 合作事项
 
-我们非常感谢大家对 [`SoybeanAdmin`](https://github.com/soybeanjs/soybean-admin) 的支持！为了进一步回馈社区，并助力企业和开发者实现个性化需求，我们现提供多种合作服务，期待与您携手共赢。
+我们非常感谢大家对 [`DreamHubAdmin`](https://github.com/soybeanjs/soybean-admin) 的支持！为了进一步回馈社区，并助力企业和开发者实现个性化需求，我们现提供多种合作服务，期待与您携手共赢。
 
 ##### 1、定制化管理后台开发
 
-针对企业和开发者的特定业务需求，我们提供基于 [`SoybeanAdmin`](https://github.com/soybeanjs/soybean-admin) 的定制化管理后台开发服务。我们的团队具备丰富的行业经验，能够迅速理解并实现您的需求，打造高效、灵活且安全的定制化解决方案。
+针对企业和开发者的特定业务需求，我们提供基于 [`DreamHubAdmin`](https://github.com/soybeanjs/soybean-admin) 的定制化管理后台开发服务。我们的团队具备丰富的行业经验，能够迅速理解并实现您的需求，打造高效、灵活且安全的定制化解决方案。
 
 - **定制开发**：我们将根据您的具体需求，提供从需求分析、UI设计到功能实现的全方位服务，确保项目高效交付。
-- **功能扩展**：在 [`SoybeanAdmin`](https://github.com/soybeanjs/soybean-admin) 基础上，扩展您所需的特定功能模块，提升管理后台的功能和用户体验。
+- **功能扩展**：在 [`DreamHubAdmin`](https://github.com/soybeanjs/soybean-admin) 基础上，扩展您所需的特定功能模块，提升管理后台的功能和用户体验。
 
 ##### 2、企业外包服务
 
 我们承接各类企业级外包项目，特别是在管理后台系统的开发、集成与运维方面。我们以精益求精的态度，确保项目的质量和进度，为您的业务提供强有力的技术支持。
 
 - **项目开发**：无论是全新的项目，还是现有系统的优化与集成，我们都将为您量身打造高效可靠的解决方案。
-- **系统集成与维护**：我们也提供基于 [`SoybeanAdmin`](https://github.com/soybeanjs/soybean-admin) 的系统集成与长期维护服务，确保您的系统稳定、安全地运行。
+- **系统集成与维护**：我们也提供基于 [`DreamHubAdmin`](https://github.com/soybeanjs/soybean-admin) 的系统集成与长期维护服务，确保您的系统稳定、安全地运行。
 
 ##### 3、联系方式
 
@@ -86,7 +86,7 @@
 - **GitHub Issues**: 欢迎通过 [GitHub Issues](https://github.com/soybeanjs/soybean-admin/issues/new) 联系我们，进行初步的合作洽谈。
 - **商务合作微信**:  honghuangdc
 
-期待与您开展深入合作，共同推动 SoybeanAdmin 项目及其在更多领域的成功应用！
+期待与您开展深入合作，共同推动 DreamHubAdmin 项目及其在更多领域的成功应用！
 
 
 ## 示例图片
@@ -145,7 +145,7 @@ pnpm build
 
 ## 周边生态
 
-- [react-soybean-admin](https://github.com/mufeng889/react-soybean-admin): 基于SoybeanAdmin的React版本.
+- [react-soybean-admin](https://github.com/mufeng889/react-soybean-admin): 基于DreamHubAdmin的React版本.
 - [electron-mock-admin](https://github.com/lixin59/electron-mock-api): 一个 Mock Api 管理系统，帮助前端开发伙伴快速实现接口的 mock。
 - [T-Shell](https://github.com/TheBlindM/T-Shell): 是一个可配置命令提示的终端模拟器和 SSH 客户端。
 - [pea](https://github.com/haitang1894/pea) : 采用SpringBoot3.2 + JDK21、MyBatis-Plus、SpringSecurity安全框架等，适配 [soybean-admin](https://gitee.com/honghuangdc/soybean-admin) 开发的简单权限系统。
@@ -190,7 +190,7 @@ pnpm build
 
 ## 交流
 
-`SoybeanAdmin` 是完全开源免费的项目，在帮助开发者更方便地进行中大型管理系统开发，同时也提供微信和 QQ 交流群，使用问题欢迎在群内提问。
+`DreamHubAdmin` 是完全开源免费的项目，在帮助开发者更方便地进行中大型管理系统开发，同时也提供微信和 QQ 交流群，使用问题欢迎在群内提问。
 
   <div>
   	<p>QQ交流群</p>

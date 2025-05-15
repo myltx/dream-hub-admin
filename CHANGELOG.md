@@ -922,7 +922,7 @@
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
 
-- **projects**: `Soybean Admin` to `SoybeanAdmin` &nbsp;-&nbsp; by @honghuangdc [<samp>(a8dbc)</samp>](https://github.com/soybeanjs/soybean-admin/commit/a8dbc03)
+- **projects**: `Soybean Admin` to `DreamHubAdmin` &nbsp;-&nbsp; by @honghuangdc [<samp>(a8dbc)</samp>](https://github.com/soybeanjs/soybean-admin/commit/a8dbc03)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
