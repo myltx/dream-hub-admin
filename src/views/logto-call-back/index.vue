@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue';
+import { computed, ref } from 'vue';
 import { getPaletteColorByNumber, mixColor } from '@sa/color';
 import { useHandleSignInCallback, useLogto } from '@logto/vue';
 import { getUserInfoByUserId } from '@/service/api';
@@ -8,6 +8,7 @@ import { useAppStore } from '@/store/modules/app';
 import { useAuthStore } from '@/store/modules/auth';
 import { localStg } from '@/utils/storage';
 import { $t } from '@/locales';
+import { logtoSignIn } from '@/logto/logto.auth';
 
 defineOptions({
   name: 'LogtoCallBack'
@@ -54,27 +55,6 @@ const { isLoading } = useHandleSignInCallback(async () => {
     });
   } catch (error) {
     console.log(error, 'error');
-  }
-});
-
-watchEffect(() => {
-  if (!isAuthenticated.value && !isLoading.value) {
-    console.log('未登录');
-    // window.$dialog.
-
-    window.$dialog?.info({
-      title: $t('common.tip'),
-      content: $t('common.lookEffectConfirm'),
-      positiveText: $t('common.confirm'),
-      negativeText: $t('common.cancel'),
-      onPositiveClick: () => {
-        window.location.href = VITE_BACKEND_ENDPOINT;
-        // const { signOut } = useLogto();
-        // const { VITE_LOGTO_SIGN_OUT_REDIRECT_URI } = import.meta.env;
-        // authStore.resetStore();
-        // signOut(VITE_LOGTO_SIGN_OUT_REDIRECT_URI);
-      }
-    });
   }
 });
 
@@ -127,6 +107,12 @@ const bgColor = computed(() => {
                   v-if="isLoading"
                   class="ml-4 h-6 w-6 animate-spin border-4 border-primary border-t-transparent rounded-full border-solid"
                 ></div>
+
+                <div v-if="!isLoading && !isAuthenticated" class="flex items-center justify-center">
+                  <NButton type="primary" size="large" round block @click="logtoSignIn">
+                    {{ $t('page.logto-call-back.logtoLogin') }}
+                  </NButton>
+                </div>
               </div>
             </Transition>
           </div>

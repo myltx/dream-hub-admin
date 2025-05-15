@@ -499,6 +499,7 @@ declare namespace App {
         'logto-call-back': {
           title: string;
           desc: string;
+          logtoLogin: string;
         };
       };
       form: {

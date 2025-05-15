@@ -251,7 +251,8 @@ const local: App.I18n.Schema = {
     },
     'logto-call-back': {
       title: 'Logto SingIng',
-      desc: 'Logto SingIng'
+      desc: 'Logto SingIng',
+      logtoLogin: 'Logto Login'
     }
   },
   form: {

@@ -251,7 +251,8 @@ const local: App.I18n.Schema = {
     },
     'logto-call-back': {
       title: 'Logto 登录中，请稍后...',
-      desc: 'Logto 登录中，请稍后...'
+      desc: 'Logto 登录中，请稍后...',
+      logtoLogin: 'Logto 登录'
     }
   },
   form: {
