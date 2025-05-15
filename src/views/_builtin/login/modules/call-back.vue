@@ -9,10 +9,12 @@ const { VITE_BACKEND_ENDPOINT } = import.meta.env;
 
 const authStore = useAuthStore();
 const { getIdTokenClaims, fetchUserInfo, getAccessToken } = useLogto();
-console.log('我是会回掉页面');
+console.log('我是回掉页面');
+alert('我是回掉页面');
 
 const { isLoading } = useHandleSignInCallback(async () => {
   console.log('回调');
+  alert('回调');
   // try {
   //   const claims = await getIdTokenClaims();
   //   const token = (await getAccessToken(VITE_BACKEND_ENDPOINT)) as string;
