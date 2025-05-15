@@ -20,37 +20,41 @@ const { getIdTokenClaims, fetchUserInfo, getAccessToken } = useLogto();
 
 const { isLoading } = useHandleSignInCallback(async () => {
   // console.log('回调');
-  const claims = await getIdTokenClaims();
-  const token = (await getAccessToken(VITE_BACKEND_ENDPOINT)) as string;
+  try {
+    const claims = await getIdTokenClaims();
+    const token = (await getAccessToken(VITE_BACKEND_ENDPOINT)) as string;
 
-  localStg.set('token', token);
-  localStg.set('refreshToken', token);
-  // 完成后执行某些操作，例如重定向到主页
-  const res = await fetchUserInfo();
-  const userInfo = ref<any>({});
-  const { data } = await getUserInfoByUserId({
-    userId: res?.sub as string
-  });
-  // 暂时并未添加异常处理
-  if (!data) {
-    // await createUser({
-    //   userId: res?.sub,
-    //   email: res?.email,
-    // });
-    // const { data: userData } = await getUserInfoByUserId({
-    //   userId: res?.sub as string,
-    // });
-    // userInfo.value = userData;
-  } else {
-    userInfo.value = data;
+    localStg.set('token', token);
+    localStg.set('refreshToken', token);
+    // 完成后执行某些操作，例如重定向到主页
+    const res = await fetchUserInfo();
+    const userInfo = ref<any>({});
+    const { data } = await getUserInfoByUserId({
+      userId: res?.sub as string
+    });
+    // 暂时并未添加异常处理
+    if (!data) {
+      // await createUser({
+      //   userId: res?.sub,
+      //   email: res?.email,
+      // });
+      // const { data: userData } = await getUserInfoByUserId({
+      //   userId: res?.sub as string,
+      // });
+      // userInfo.value = userData;
+    } else {
+      userInfo.value = data;
+    }
+    authStore.logtoLoginSuccess({
+      userId: res?.sub,
+      token,
+      ...res,
+      ...claims,
+      userInfo: userInfo.value
+    });
+  } catch (error) {
+    console.log(error, 'error');
   }
-  authStore.logtoLoginSuccess({
-    userId: res?.sub,
-    token,
-    ...res,
-    ...claims,
-    userInfo: userInfo.value
-  });
 });
 
 const appStore = useAppStore();
