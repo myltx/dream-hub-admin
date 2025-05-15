@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { logtoSignIn } from '@/logto/logto.auth';
 
+defineOptions({
+  name: 'AutoLogin'
+});
 logtoSignIn();
 </script>
 
