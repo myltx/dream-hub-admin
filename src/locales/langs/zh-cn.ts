@@ -164,7 +164,8 @@ const local: App.I18n.Schema = {
     404: '页面不存在',
     500: '服务器错误',
     'iframe-page': '外链页面',
-    home: '首页'
+    home: '首页',
+    'logto-call-back': 'Logto 登录回调'
   },
   page: {
     login: {
@@ -247,6 +248,10 @@ const local: App.I18n.Schema = {
         desc5: 'Soybean 刚才把工作台页面随便写了一些，凑合能看了！'
       },
       creativity: '创意'
+    },
+    'logto-call-back': {
+      title: 'Logto 登录中，请稍后...',
+      desc: 'Logto 登录中，请稍后...'
     }
   },
   form: {

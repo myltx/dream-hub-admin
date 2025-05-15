@@ -74,5 +74,16 @@ export const generatedRoutes: GeneratedRoute[] = [
       constant: true,
       hideInMenu: true
     }
+  },
+  {
+    name: 'logto-call-back',
+    path: '/logto-call-back',
+    component: 'layout.blank$view.logto-call-back',
+    meta: {
+      title: 'logto-call-back',
+      constant: true,
+      hideInMenu: true,
+      i18nKey: 'route.logto-call-back'
+    }
   }
 ];

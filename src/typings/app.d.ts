@@ -496,6 +496,10 @@ declare namespace App {
           };
           creativity: string;
         };
+        'logto-call-back': {
+          title: string;
+          desc: string;
+        };
       };
       form: {
         required: string;

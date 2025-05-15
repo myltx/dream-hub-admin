@@ -164,7 +164,8 @@ const local: App.I18n.Schema = {
     404: 'Page Not Found',
     500: 'Server Error',
     'iframe-page': 'Iframe',
-    home: 'Home'
+    home: 'Home',
+    'logto-call-back': 'logtoCallback'
   },
   page: {
     login: {
@@ -247,6 +248,10 @@ const local: App.I18n.Schema = {
         desc5: 'Soybean just wrote some of the workbench pages casually, and it was enough to see!'
       },
       creativity: 'Creativity'
+    },
+    'logto-call-back': {
+      title: 'Logto SingIng',
+      desc: 'Logto SingIng'
     }
   },
   form: {
