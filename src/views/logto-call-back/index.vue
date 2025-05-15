@@ -8,54 +8,49 @@ import { useAppStore } from '@/store/modules/app';
 import { useAuthStore } from '@/store/modules/auth';
 import { localStg } from '@/utils/storage';
 import { $t } from '@/locales';
-import { logtoSignIn } from '@/logto/logto.auth';
 
 defineOptions({
   name: 'LogtoCallBack'
 });
 
-const { VITE_BACKEND_ENDPOINT } = import.meta.env;
+const { VITE_BACKEND_ENDPOINT, VITE_LOGTO_SIGN_OUT_REDIRECT_URI } = import.meta.env;
 
 const authStore = useAuthStore();
 const { getIdTokenClaims, fetchUserInfo, getAccessToken, isAuthenticated } = useLogto();
 
 const { isLoading } = useHandleSignInCallback(async () => {
-  // console.log('回调');
-  try {
-    const claims = await getIdTokenClaims();
-    const token = (await getAccessToken(VITE_BACKEND_ENDPOINT)) as string;
+  console.log('回调');
+  const claims = await getIdTokenClaims();
+  const token = (await getAccessToken(VITE_BACKEND_ENDPOINT)) as string;
 
-    localStg.set('token', token);
-    localStg.set('refreshToken', token);
-    // 完成后执行某些操作，例如重定向到主页
-    const res = await fetchUserInfo();
-    const userInfo = ref<any>({});
-    const { data } = await getUserInfoByUserId({
-      userId: res?.sub as string
-    });
-    // 暂时并未添加异常处理
-    if (!data) {
-      // await createUser({
-      //   userId: res?.sub,
-      //   email: res?.email,
-      // });
-      // const { data: userData } = await getUserInfoByUserId({
-      //   userId: res?.sub as string,
-      // });
-      // userInfo.value = userData;
-    } else {
-      userInfo.value = data;
-    }
-    authStore.logtoLoginSuccess({
-      userId: res?.sub,
-      token,
-      ...res,
-      ...claims,
-      userInfo: userInfo.value
-    });
-  } catch (error) {
-    console.log(error, 'error');
+  localStg.set('token', token);
+  localStg.set('refreshToken', token);
+  // 完成后执行某些操作，例如重定向到主页
+  const res = await fetchUserInfo();
+  const userInfo = ref<any>({});
+  const { data } = await getUserInfoByUserId({
+    userId: res?.sub as string
+  });
+  // 暂时并未添加异常处理
+  if (!data) {
+    // await createUser({
+    //   userId: res?.sub,
+    //   email: res?.email,
+    // });
+    // const { data: userData } = await getUserInfoByUserId({
+    //   userId: res?.sub as string,
+    // });
+    // userInfo.value = userData;
+  } else {
+    userInfo.value = data;
   }
+  authStore.logtoLoginSuccess({
+    userId: res?.sub,
+    token,
+    ...res,
+    ...claims,
+    userInfo: userInfo.value
+  });
 });
 
 const appStore = useAppStore();
@@ -72,6 +67,9 @@ const bgColor = computed(() => {
 
   return mixColor(COLOR_WHITE, themeStore.themeColor, ratio);
 });
+const loginLogto = () => {
+  window.location.href = VITE_LOGTO_SIGN_OUT_REDIRECT_URI;
+};
 </script>
 
 <template>
@@ -109,7 +107,7 @@ const bgColor = computed(() => {
                 ></div>
 
                 <div v-if="!isLoading && !isAuthenticated" class="flex items-center justify-center">
-                  <NButton type="primary" size="large" round block @click="logtoSignIn">
+                  <NButton type="primary" size="large" round block @click="loginLogto">
                     {{ $t('page.logto-call-back.logtoLogin') }}
                   </NButton>
                 </div>
