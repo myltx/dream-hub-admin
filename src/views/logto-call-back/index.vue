@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { getPaletteColorByNumber, mixColor } from '@sa/color';
 import { useHandleSignInCallback, useLogto } from '@logto/vue';
 import { getUserInfoByUserId } from '@/service/api';
@@ -19,10 +19,6 @@ const authStore = useAuthStore();
 const { getIdTokenClaims, fetchUserInfo, getAccessToken, isAuthenticated } = useLogto();
 
 const { isLoading } = useHandleSignInCallback(async () => {
-  if (!isAuthenticated.value) {
-    console.log('未登录');
-    return;
-  }
   // console.log('回调');
   try {
     const claims = await getIdTokenClaims();
@@ -58,6 +54,12 @@ const { isLoading } = useHandleSignInCallback(async () => {
     });
   } catch (error) {
     console.log(error, 'error');
+  }
+});
+
+watchEffect(() => {
+  if (!isAuthenticated.value && !isLoading.value) {
+    console.log('未登录');
   }
 });
 
