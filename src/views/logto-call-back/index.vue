@@ -18,6 +18,7 @@ const { VITE_BACKEND_ENDPOINT, VITE_LOGTO_SIGN_OUT_REDIRECT_URI } = import.meta.
 const authStore = useAuthStore();
 const { getIdTokenClaims, fetchUserInfo, getAccessToken, isAuthenticated } = useLogto();
 
+console.log(import.meta.env, 'env');
 const { isLoading } = useHandleSignInCallback(async () => {
   console.log('回调');
   const claims = await getIdTokenClaims();

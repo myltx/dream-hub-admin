@@ -5,6 +5,7 @@ const { VITE_LOGTO_SIGN_IN_REDIRECT_URI, VITE_LOGTO_SIGN_OUT_REDIRECT_URI, VITE_
 // const logto = useLogto();
 export async function logtoSignIn() {
   const { signIn } = useLogto();
+  console.log(import.meta.env, 'env');
   return signIn(VITE_LOGTO_SIGN_IN_REDIRECT_URI);
 }
 
