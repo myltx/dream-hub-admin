@@ -8,7 +8,6 @@ import { useAppStore } from '@/store/modules/app';
 import { useAuthStore } from '@/store/modules/auth';
 import { localStg } from '@/utils/storage';
 import { $t } from '@/locales';
-import { logtoSignIn } from '@/logto/logto.auth';
 
 defineOptions({
   name: 'LogtoCallBack'
@@ -61,7 +60,21 @@ const { isLoading } = useHandleSignInCallback(async () => {
 watchEffect(() => {
   if (!isAuthenticated.value && !isLoading.value) {
     console.log('未登录');
-    logtoSignIn();
+    // window.$dialog.
+
+    window.$dialog?.info({
+      title: $t('common.tip'),
+      content: $t('common.lookEffectConfirm'),
+      positiveText: $t('common.confirm'),
+      negativeText: $t('common.cancel'),
+      onPositiveClick: () => {
+        window.location.href = VITE_BACKEND_ENDPOINT;
+        // const { signOut } = useLogto();
+        // const { VITE_LOGTO_SIGN_OUT_REDIRECT_URI } = import.meta.env;
+        // authStore.resetStore();
+        // signOut(VITE_LOGTO_SIGN_OUT_REDIRECT_URI);
+      }
+    });
   }
 });
 
