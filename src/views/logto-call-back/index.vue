@@ -16,9 +16,13 @@ defineOptions({
 const { VITE_BACKEND_ENDPOINT } = import.meta.env;
 
 const authStore = useAuthStore();
-const { getIdTokenClaims, fetchUserInfo, getAccessToken } = useLogto();
+const { getIdTokenClaims, fetchUserInfo, getAccessToken, isAuthenticated } = useLogto();
 
 const { isLoading } = useHandleSignInCallback(async () => {
+  if (!isAuthenticated.value) {
+    console.log('未登录');
+    return;
+  }
   // console.log('回调');
   try {
     const claims = await getIdTokenClaims();
