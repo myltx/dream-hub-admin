@@ -8,6 +8,7 @@ import { useAppStore } from '@/store/modules/app';
 import { useAuthStore } from '@/store/modules/auth';
 import { localStg } from '@/utils/storage';
 import { $t } from '@/locales';
+import { logtoSignIn } from '@/logto/logto.auth';
 
 defineOptions({
   name: 'LogtoCallBack'
@@ -60,6 +61,7 @@ const { isLoading } = useHandleSignInCallback(async () => {
 watchEffect(() => {
   if (!isAuthenticated.value && !isLoading.value) {
     console.log('未登录');
+    logtoSignIn();
   }
 });
 
